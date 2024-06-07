@@ -1,0 +1,18 @@
+# Temporary files
+tmp
+
+# Built js and css artifacts
+web/static
+
+# ick
+node_modules
+
+# Built artifacts
+bin
+
+# Shared protobuf definition files
+./proto
+
+# Mac files
+.DS_Store
+**/.DS_Store

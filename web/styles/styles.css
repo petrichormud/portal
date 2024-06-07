@@ -1,0 +1,373 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --err: 345.3, 82.7%, 40.8%;
+    --err-bg: 355.6, 100%, 94.7%;
+    --err-fg: 343.4, 79.7%, 34.7%;
+    --err-hl: 346.8, 77.2%, 49.8%;
+
+    --warn: 26, 90.5%, 37.1%;
+    --warn-bg: 48, 96.5%, 88.8%;
+    --warn-fg: 22.7, 82.5%, 31.4%;
+    --warn-hl: 32.1, 94.6%, 43.7%;
+
+    --info: 201.3, 96.3%, 32.2%;
+    --info-bg: 204, 93.8%, 93.7%;
+    --info-fg: 201, 90%, 27.5%;
+    --info-hl: 200.4, 98%, 39.4%;
+
+    --success: 162.9, 93.5%, 24.3%;
+    --success-bg: 149.3, 80.4%, 90%;
+    --success-fg: 163.1, 88.1%, 19.8%;
+    --success-hl: 161.4, 93.5%, 30.4%;
+
+    --incomplete: 216.9, 19.1%, 26.7%;
+    --ready: var(--primary);
+    --submitted: 201.3, 96.3%, 32.2%;
+    --in-review: 26, 90.5%, 37.1%;
+    --reviewed: var(--in-review);
+    --approved: 162.9, 93.5%, 24.3%;
+    --rejected: 345.3, 82.7%, 40.8%;
+    --canceled: var(--ready);
+    --archived: var(--archived);
+
+    --radius: 0.5rem;
+  }
+
+  .light {
+    --bg: 0, 0%, 100%;
+    --fg: 222.2, 84%, 4.9%;
+
+    --primary: 222.2, 47.4%, 11.2%;
+    --primary-muted: 222.2, 47.4%, 31.2%;
+    --primary-fg: 210, 40%, 98%;
+
+    --secondary: 252.5, 73.3%, 57.8%;
+    --on-secondary: 210, 40%, 98%;
+    --secondary-hl: 252.5, 93.2%, 87.3%;
+
+    --muted: 210, 40%, 96.1%;
+    --muted-fg: 215.4, 16.3%, 46.9%;
+
+    --accent: var(--muted);
+    --accent-fg: var(--primary);
+
+    --border: 214.3, 31.8%, 91.4%;
+    --input: var(--border);
+    --ring: var(--fg);
+  }
+
+  .dark {
+    --bg: 222.2, 84%, 4.9%;
+    --fg: 210, 40%, 98%;
+
+    --primary: var(--fg);
+    --primary-muted: 210, 40%, 83%;
+    --primary-fg: 222.2, 47.4%, 11.2%;
+
+    --secondary: 252.5, 73.3%, 57.8%;
+    --on-secondary: var(--fg);
+    --secondary-hl: 252.5, 93.2%, 87.3%;
+
+    --muted: 217.2, 32.6%, 17.5%;
+    --muted-fg: 215, 20.2%, 65.1%;
+
+    --accent: var(--muted);
+    --accent-fg: var(--fg);
+
+    --border: var(--muted);
+    --input: var(--muted);
+    --ring: var(--muted-fg);
+  }
+
+  .keep {
+    --ring: 212.7, 26.8%, 83.9%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-bg text-fg;
+  }
+}
+
+[x-cloak] {
+  display: none !important;
+}
+
+body {
+  scrollbar-gutter: stable;
+}
+
+.flow > * + * {
+  padding-top: 1.5rem;
+}
+
+.header-4 {
+  @apply text-sm font-medium leading-none tracking-tight;
+}
+
+/* TODO: Clean this up along with the username handling, this should be a class instead of an id */
+#actor-image-reserved:not(.htmx-request) > #actor-image-reserved-indicator {
+  display: none;
+}
+
+#actor-image-reserved.htmx-request > #actor-image-reserved-status {
+  display: none;
+}
+
+#actor-image-reserved.htmx-request > #actor-image-reserved-indicator {
+  display: default;
+}
+
+#username-reserved:not(.htmx-request) > #username-reserved-indicator {
+  display: none;
+}
+
+#username-reserved.htmx-request > #username-reserved-status {
+  display: none;
+}
+
+#username-reserved.htmx-request > #username-reserved-indicator {
+  display: default;
+}
+
+.htmx-trade-indicator:not(.htmx-request) > .htmx-trade-indicator-in {
+  display: none;
+}
+
+.htmx-trade-indicator.htmx-request > .htmx-trade-indicator-out {
+  display: none;
+}
+
+.htmx-trade-indicator.htmx-request > .htmx-trade-indicator-in {
+  display: default;
+}
+
+.dropdown .dropdown-content {
+  display: none;
+}
+
+.dropdown .icon {
+  transition: transform 250ms;
+}
+
+.hard-dropdown .icon {
+  transition: transform 250ms;
+}
+
+.hard-dropdown.open .icon {
+  transform: rotate(-180deg);
+}
+
+.dropdown:hover .icon {
+  transform: rotate(-180deg);
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.modal {
+  @apply z-20 fixed left-[50%] top-0 w-full max-w-lg translate-x-[-50%] border bg-bg p-6 shadow-lg sm:rounded-lg md:top-[50%] md:translate-y-[-50%];
+}
+
+.notice {
+  @apply rounded-md text-sm leading-none px-6 py-4 flex items-center;
+}
+
+.notice-error {
+  @apply bg-err-bg text-err-fg;
+}
+
+.notice-warn {
+  @apply bg-warn-bg text-warn-fg;
+}
+
+.notice-info {
+  @apply bg-info-bg text-info-fg;
+}
+
+.notice-success {
+  @apply bg-success-bg text-success-fg;
+}
+
+.notice-link {
+  @apply cursor-pointer border-none bg-none font-semibold;
+}
+
+.notice-link:hover {
+  @apply underline;
+}
+
+.notice-link-error:hover {
+  @apply text-err-hl;
+}
+
+.notice-link-warn:hover {
+  @apply text-warn-hl;
+}
+
+.notice-link-info:hover {
+  @apply text-info-hl;
+}
+
+.notice-link-success:hover {
+  @apply text-success-hl;
+}
+
+.button {
+  @apply inline-flex h-10 w-max items-center justify-center gap-1 rounded-md leading-none px-4 py-2 text-sm font-medium;
+}
+
+.button-nav {
+  @apply bg-bg transition-colors select-none;
+}
+
+.button-nav-active {
+  @apply bg-accent text-accent-fg select-none cursor-default;
+}
+
+.button-nav:hover {
+  @apply bg-accent text-accent-fg;
+}
+
+.button-nav:focus {
+  @apply bg-accent text-accent-fg outline-none;
+}
+
+.button-toggle {
+  @apply bg-bg transition-colors select-none;
+}
+
+.button-toggle:hover {
+  @apply bg-accent text-accent-fg;
+}
+
+.button-toggle-active {
+  @apply bg-accent text-accent-fg select-none;
+}
+
+.button-toggle-active:hover {
+  @apply bg-primary text-primary-fg;
+}
+
+.button-primary {
+  @apply bg-primary text-primary-fg ring-offset-bg transition-colors;
+}
+
+.button-primary:hover {
+  @apply bg-primary-muted;
+}
+
+.button-primary:disabled {
+  @apply opacity-50 pointer-events-none;
+}
+
+.button-primary-destructive {
+  @apply bg-err text-primary;
+}
+
+.button-primary-destructive:hover {
+  @apply bg-err-hl;
+}
+
+.button-secondary {
+  @apply bg-secondary text-on-secondary ring-offset-bg transition-colors;
+}
+
+.button-secondary:hover {
+  @apply bg-secondary-hl text-primary-fg;
+}
+
+.button-secondary:disabled {
+  @apply opacity-50 pointer-events-none;
+}
+
+.button-outline {
+  @apply border border-primary text-primary ring-offset-bg transition-colors;
+}
+
+.button-outline:hover {
+  @apply bg-muted;
+}
+
+.button-outline:disabled {
+  @apply pointer-events-none opacity-50;
+}
+
+.button-outline-destructive {
+  @apply border-err text-err;
+}
+
+.button-outline-destructive:hover {
+  @apply bg-err-bg;
+}
+
+.input {
+  @apply flex h-10 w-full rounded-md border border-input bg-bg px-3 py-2 text-sm ring-offset-bg;
+}
+
+.input:disabled {
+  @apply cursor-not-allowed opacity-50;
+}
+
+.input:focus-visible {
+  @apply border-primary outline-none ring-2 ring-ring ring-offset-2;
+}
+
+.input:placeholder {
+  @apply text-muted-fg;
+}
+
+.switch {
+  @apply h-6 w-11 rounded-full bg-gray-400;
+}
+
+.switch:after {
+  @apply absolute start-[2px] top-[2px] h-5 w-5 rounded-full border border-bg bg-bg transition-all content-[''];
+}
+
+/* TODO: Put these into a header class */
+.help h1 {
+  @apply pb-6 font-extrabold tracking-tight leading-none text-3xl;
+}
+
+.help h2 {
+  @apply pb-4 font-extrabold tracking-tight leading-none text-xl;
+}
+
+.help p {
+  @apply pl-5;
+}
+
+.help ol {
+  @apply pl-14 list-decimal;
+}
+
+.help ul {
+  @apply pl-14 list-disc;
+}
+
+.help pre {
+  @apply pl-5 py-4;
+}
+
+.help code {
+  @apply block p-4 max-w-[60%] rounded-md bg-primary text-primary-fg;
+}
+
+@screen lg {
+  .help h1 {
+    @apply text-4xl;
+  }
+
+  .help h2 {
+    @apply text-2xl;
+  }
+}
