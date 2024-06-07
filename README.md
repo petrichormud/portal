@@ -1,4 +1,4 @@
-# Petrichor - Mirror
+# Petrichor - Portal
 
 ## Before Developing Locally
 
