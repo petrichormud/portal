@@ -16,8 +16,8 @@ templ Layout(in LayoutProps) {
 			CSRF:  in.CSRF,
 		})
 		<body class={ in.Theme }>
-			header
-			slot
+			@Nav()
+			{ children... }
 			footer
 		</body>
 	</html>

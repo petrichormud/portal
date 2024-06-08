@@ -22,8 +22,14 @@ var runCmd = &cobra.Command{
 		mux.Handle("GET /static/", http.StripPrefix("/static/", static))
 
 		mux.HandleFunc("GET /", func(w http.ResponseWriter, r *http.Request) {
-			c := component.Home()
-			handler := templ.Handler(c)
+			if r.URL.Path == "/" {
+				handler := templ.Handler(component.Home())
+				handler.ServeHTTP(w, r)
+				return
+			}
+
+			handler := templ.Handler(component.NotFound())
+			w.WriteHeader(http.StatusNotFound)
 			handler.ServeHTTP(w, r)
 		})
 
