@@ -1,14 +1,12 @@
 package cmd
 
 import (
-	"fmt"
 	"log"
 	"net/http"
 
-	"github.com/a-h/templ"
 	"github.com/spf13/cobra"
 
-	"github.com/petrichormud/portal/internal/component"
+	"github.com/petrichormud/portal/internal/server"
 )
 
 var runCmd = &cobra.Command{
@@ -21,21 +19,7 @@ var runCmd = &cobra.Command{
 		static := http.FileServer(http.Dir("./static"))
 		mux.Handle("GET /static/", http.StripPrefix("/static/", static))
 
-		mux.HandleFunc("GET /", func(w http.ResponseWriter, r *http.Request) {
-			if r.URL.Path == "/" {
-				handler := templ.Handler(component.Home())
-				handler.ServeHTTP(w, r)
-				return
-			}
-
-			handler := templ.Handler(component.NotFound())
-			w.WriteHeader(http.StatusNotFound)
-			handler.ServeHTTP(w, r)
-		})
-
-		mux.HandleFunc("GET /about", func(w http.ResponseWriter, r *http.Request) {
-			fmt.Fprintf(w, "About")
-		})
+		mux.Handle("GET /", server.Home)
 
 		s := &http.Server{
 			Addr:    ":8008",
