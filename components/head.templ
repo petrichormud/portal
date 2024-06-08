@@ -1,0 +1,23 @@
+package components
+
+type HeadProps struct {
+	Title string
+	Meta  string
+	CSRF  string
+}
+
+templ Head(in HeadProps) {
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+		<meta name="description" content={ in.Meta }/>
+		<meta id="csrf" name="csrf_" content={ in.CSRF }/>
+		<title>{ in.Title }</title>
+		<link rel="stylesheet" type="text/css" href="/assets/css/styles.min.css"/>
+		<script src="/assets/js/iconify-icon.min.js"></script>
+		<script src="/assets/js/htmx.min.js"></script>
+		<script defer src="/assets/js/main.min.js" type="module"></script>
+		<script defer src="/assets/js/alpine.min.js"></script>
+	</head>
+}

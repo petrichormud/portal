@@ -14,31 +14,31 @@ dev:
 
 alpine:
 	curl -o \
-		static/alpine-focus.min.js \
+		assets/js/alpine-focus.min.js \
 		https://cdn.jsdelivr.net/npm/@alpinejs/focus@3.x.x/dist/cdn.min.js
 	curl -o \
-		static/alpine-morph.min.js \
+		assets/js/alpine-morph.min.js \
 		https://cdn.jsdelivr.net/npm/@alpinejs/morph@3.x.x/dist/cdn.min.js
 	curl -o \
-		static/alpine.min.js \
+		assets/js/alpine.min.js \
 		https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js
 
 htmx:
 	curl -o \
-		static/htmx.min.js \
+		assets/js/htmx.min.js \
 		https://unpkg.com/htmx.org@1.9.6/dist/htmx.min.js
 	curl -o \
-		static/htmx-morph.js \
+		assets/js/htmx-morph.js \
 		https://unpkg.com/htmx.org@1.9.6/dist/ext/alpine-morph.js
 
 icons:
 	curl -o \
-		static/iconify-icon.min.js \
+		assets/js/iconify-icon.min.js \
 		https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js
 
 mainjs:
-	bun build web/scripts/main.js \
-		--outdir web/static \
+	bun build web/js/main.js \
+		--outdir assets/js \
 		--minify-whitespace \
 		--minify-syntax \
 		--entry-naming "[dir]/[name].min.[ext]"

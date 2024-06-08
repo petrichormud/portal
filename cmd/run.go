@@ -6,7 +6,7 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/petrichormud/portal/internal/server"
+	"github.com/petrichormud/portal/handlers"
 )
 
 var runCmd = &cobra.Command{
@@ -16,10 +16,10 @@ var runCmd = &cobra.Command{
 	Run: func(_ *cobra.Command, _ []string) {
 		mux := http.NewServeMux()
 
-		static := http.FileServer(http.Dir("./static"))
-		mux.Handle("GET /static/", http.StripPrefix("/static/", static))
+		static := http.FileServer(http.Dir("./assets"))
+		mux.Handle("GET /assets/", http.StripPrefix("/assets/", static))
 
-		mux.Handle("GET /", server.Home)
+		mux.Handle("GET /", handlers.Home)
 
 		s := &http.Server{
 			Addr:    ":8008",

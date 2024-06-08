@@ -2,7 +2,7 @@ import type { Config } from "tailwindcss";
 import Forms from "@tailwindcss/forms";
 
 export default {
-  content: ["./internal/component/*.templ"],
+  content: ["./components/*.templ"],
   safelist: [
     "light",
     "dark",
