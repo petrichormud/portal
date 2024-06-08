@@ -16,9 +16,9 @@ templ Layout(in LayoutProps) {
 			CSRF:  in.CSRF,
 		})
 		<body class={ in.Theme }>
-			@Nav()
+			@Header()
 			{ children... }
-			footer
+			@Footer("2024")
 		</body>
 	</html>
 }
