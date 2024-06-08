@@ -1,9 +1,6 @@
 # Temporary files
 tmp
 
-# Built js and css artifacts
-web/static
-
 # ick
 node_modules
 

@@ -1,6 +1,7 @@
 {
   "type": "module",
   "scripts": {
+    "postcss": "postcss web/styles/styles.css -o static/styles.min.css",
     "test": "vitest run"
   },
   "devDependencies": {

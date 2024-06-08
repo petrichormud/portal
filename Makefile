@@ -14,26 +14,26 @@ dev:
 
 alpine:
 	curl -o \
-		web/static/alpine-focus.min.js \
+		static/alpine-focus.min.js \
 		https://cdn.jsdelivr.net/npm/@alpinejs/focus@3.x.x/dist/cdn.min.js
 	curl -o \
-		web/static/alpine-morph.min.js \
+		static/alpine-morph.min.js \
 		https://cdn.jsdelivr.net/npm/@alpinejs/morph@3.x.x/dist/cdn.min.js
 	curl -o \
-		web/static/alpine.min.js \
+		static/alpine.min.js \
 		https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js
 
 htmx:
 	curl -o \
-		web/static/htmx.min.js \
+		static/htmx.min.js \
 		https://unpkg.com/htmx.org@1.9.6/dist/htmx.min.js
 	curl -o \
-		web/static/htmx-morph.js \
+		static/htmx-morph.js \
 		https://unpkg.com/htmx.org@1.9.6/dist/ext/alpine-morph.js
 
 icons:
 	curl -o \
-		web/static/iconify-icon.min.js \
+		static/iconify-icon.min.js \
 		https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js
 
 mainjs:
@@ -50,7 +50,7 @@ js:
 	make mainjs
 
 css:
-	npx postcss web/styles/styles.css -o web/static/styles.min.css
+	npm run postcss
 
 redis:
 	docker run --name app-redis -p 6379:6379 -d --rm redis

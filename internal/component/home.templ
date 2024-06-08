@@ -1,9 +1,15 @@
 package component
 
 templ Home() {
-	<main>
-		Home
-		<br/>
-		@Test()
-	</main>
+	@Layout(LayoutProps{
+		HTMLTitle: "Petrichor MUD",
+		Meta:      "Petrichor MUD - a modern take on a classic",
+		Theme:     "dark",
+	}) {
+		<main>
+			Home
+			<br/>
+			@Test()
+		</main>
+	}
 }

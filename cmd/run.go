@@ -18,6 +18,9 @@ var runCmd = &cobra.Command{
 	Run: func(_ *cobra.Command, _ []string) {
 		mux := http.NewServeMux()
 
+		static := http.FileServer(http.Dir("./static"))
+		mux.Handle("GET /static/", http.StripPrefix("/static/", static))
+
 		mux.HandleFunc("GET /", func(w http.ResponseWriter, r *http.Request) {
 			c := component.Home()
 			handler := templ.Handler(c)

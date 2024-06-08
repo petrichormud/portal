@@ -1,0 +1,24 @@
+package component
+
+type LayoutProps struct {
+	HTMLTitle string
+	Theme     string
+	Meta      string
+	CSRF      string
+}
+
+templ Layout(in LayoutProps) {
+	<!DOCTYPE html>
+	<html lang="en">
+		@Head(HeadProps{
+			Title: in.HTMLTitle,
+			Meta:  in.Meta,
+			CSRF:  in.CSRF,
+		})
+		<body class={ in.Theme }>
+			header
+			slot
+			footer
+		</body>
+	</html>
+}
